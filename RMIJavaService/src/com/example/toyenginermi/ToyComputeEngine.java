@@ -33,8 +33,11 @@ public class ToyComputeEngine extends UnicastRemoteObject implements IRMI {
 				}
 			});
 			
+			registerUserTask();
+			addToyPriceTask();
+			
 			System.out.println(Constants._SERVER + Constants.SERVER_PORT);
-		}catch (IOException | LipeRMIException e){
+		}catch (IOException | LipeRMIException | SQLException e){
 			e.printStackTrace();
 		}
 	}
@@ -42,5 +45,14 @@ public class ToyComputeEngine extends UnicastRemoteObject implements IRMI {
 	@Override
 	public <T> T executeTask(ITask<T> t) throws SQLException, RemoteException {
 		return t.execute();
+	}
+	
+	
+	public void addToyPriceTask() throws SQLException {
+		new AddToyPrice().execute();
+	}
+	
+	public void  registerUserTask() throws SQLException, RemoteException {
+		new CreateUser().execute();
 	}
 }
