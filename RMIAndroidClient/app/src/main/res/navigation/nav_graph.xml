@@ -3,26 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/LoginFragment">
 
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.toyenginermi.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+    <fragment android:id="@+id/LoginFragment"
+        android:name="com.example.toyenginermi.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.toyenginermi.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+    <fragment android:id="@+id/SignUpFragment"
+        android:name="com.example.toyenginermi.SignUpFragment"
+        tools:layout="@layout/fragment_sign_up"
+        android:label="@string/signup">
+    </fragment>
+    <fragment android:id="@+id/ViewToysFragment"
+        android:name="com.example.toyenginermi.ViewToysFragment"
+        tools:layout="@layout/fragment_view_toys"
+        android:label="@string/toys">
+    </fragment>
+    <fragment>
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
