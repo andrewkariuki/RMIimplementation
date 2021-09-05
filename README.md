@@ -3,9 +3,9 @@ ToyShopEngine RMI Implimentation with Java and Android
 
 This is an implimaentation of Java's Remote Method Invocation a simulation on how distributed sytems function at their basics.
 
-###To run the code.
+### To run the code.
 
-clone through <pre><code>git clone https://github.com/andrewkariuki/RMIimplementation.git</code></p>
+clone through <pre><code>git clone https://github.com/andrewkariuki/RMIimplementation.git</code></pre>
 
 Ensure you have atleast Eclipes, NetBeans or IntelliJ IDEA installed on your PC for running and compiling the JAVA module. For the the android client you would need Androis Studio and Android Emulator cofigured.
 
