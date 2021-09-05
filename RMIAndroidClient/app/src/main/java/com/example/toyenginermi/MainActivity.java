@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     final String  _LOCALHOST = "10.0.2.2";
-    final int _PORT = 4000;
+    final int _PORT = 1099;
     Boolean isConnected = false;
     IRMIClient irmiClient;
 
@@ -49,14 +49,7 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        try {
-            connectRMISERVICE();
-            Toast.makeText(this, "RMI Server connected.", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(this, "Cannot Connect RMI Server.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-
+        connectRMISERVICE();
     }
 
     @Override
@@ -81,15 +74,20 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private void connectRMISERVICE() throws IOException {
-        CallHandler callHandler = new CallHandler();
+    private void connectRMISERVICE() {
+        try {
+            CallHandler callHandler = new CallHandler();
 
-        Client client = new Client(_LOCALHOST, _PORT, callHandler);
+            Client client = new Client(_LOCALHOST, _PORT, callHandler);
 
-        irmiClient = (IRMIClient) client.getGlobal(IRMIClient.class);
+            irmiClient = (IRMIClient) client.getGlobal(IRMIClient.class);
 
-        System.out.println(irmiClient);
+            System.out.println(irmiClient);
 
-        isConnected = true;
+            isConnected = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

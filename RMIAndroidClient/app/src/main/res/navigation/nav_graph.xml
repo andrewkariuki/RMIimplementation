@@ -11,11 +11,27 @@
         tools:layout="@layout/fragment_login">
         <action android:id="@+id/go_from_login_to_signup"
             app:destination="@id/SignUpFragment"/>
+        <action android:id="@+id/go_from_login_to_view_toys"
+            app:destination="@id/ViewToysFragment">
+        </action>
     </fragment>
     <fragment android:id="@+id/SignUpFragment"
         android:name="com.example.toyenginermi.SignUpFragment"
         tools:layout="@layout/fragment_sign_up"
         android:label="@string/app_name">
+        <action android:id="@+id/go_from_signup_to_toys"
+            app:destination="@id/ViewToysFragment">
+        </action>
+    </fragment>
+    <fragment android:id="@+id/ToyMenuFragment"
+        android:name="com.example.toyenginermi.ToyMenuFragment"
+        android:label="@string/app_name">
+        <action android:id="@+id/go_to_toys"
+            app:destination="@id/ViewToysFragment"/>
+        <action android:id="@+id/go_to_update"
+            app:destination="@id/UpdateToyFragment"/>
+        <action android:id="@+id/go_to_delete"
+            app:destination="@id/DeleteToyFragment"/>
     </fragment>
     <fragment android:id="@+id/ViewToysFragment"
         android:name="com.example.toyenginermi.ViewToysFragment"
@@ -26,10 +42,16 @@
         android:name="com.example.toyenginermi.UpdateToyFragment"
         android:label="@string/update_toy"
         tools:layout="@layout/fragment_update_toy">
+        <action android:id="@+id/go_from_update_to_toys"
+            app:destination="@id/ViewToysFragment">
+        </action>
     </fragment>
     <fragment android:id="@+id/DeleteToyFragment"
         android:name="com.example.toyenginermi.DeleteToyFragment"
         tools:layout="@layout/fragment_delete_toy"
         android:label="@string/delete_toy">
+        <action android:id="@+id/go_from_delete_to_toys"
+            app:destination="@id/ViewToysFragment">
+        </action>
     </fragment>
 </navigation>
