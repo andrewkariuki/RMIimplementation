@@ -9,6 +9,8 @@
         android:name="com.example.toyenginermi.LoginFragment"
         android:label="@string/login"
         tools:layout="@layout/fragment_login">
+        <action android:id="@+id/go_from_login_to_signup"
+            app:destination="@id/SignUpFragment"/>
     </fragment>
     <fragment android:id="@+id/SignUpFragment"
         android:name="com.example.toyenginermi.SignUpFragment"
@@ -20,7 +22,14 @@
         tools:layout="@layout/fragment_view_toys"
         android:label="@string/toys">
     </fragment>
-    <fragment>
-
+    <fragment android:id="@+id/UpdateToyFragment"
+        android:name="com.example.toyenginermi.UpdateToyFragment"
+        android:label="@string/update_toy"
+        tools:layout="@layout/fragment_update_toy">
+    </fragment>
+    <fragment android:id="@+id/DeleteToyFragment"
+        android:name="com.example.toyenginermi.DeleteToyFragment"
+        tools:layout="@layout/fragment_delete_toy"
+        android:label="@string/delete_toy">
     </fragment>
 </navigation>
