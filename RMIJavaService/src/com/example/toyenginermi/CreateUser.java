@@ -11,10 +11,15 @@ public class CreateUser implements ITask<Boolean> {
 	private static final String _EMAIL = "andrew6kariuki@gmail.com";
 	private static final String _PASSWORD = "Andrew32@33334";
 	
-	public Boolean registerUser(String name, String email, String password ) throws SQLException {
-		
+	public Boolean registerUser(String name, String email, String password ) {
 		UserModel userModel = new UserModel();
 		User user = new User(name, email, password);
+		
+		if(userModel.selectByEmail(user.getEmail()) == null){
+			System.out.println("Not register email in use");
+			return false;
+		}
+		
 		return userModel.insert(user);
 	}
 	

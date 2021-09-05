@@ -5,7 +5,6 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +42,13 @@ public class UserModel implements IUser {
 			PreparedStatement preparedStatement =
 					DBConn.getConnection().prepareStatement(query);
 			preparedStatement.setInt(1, id);
-			return getUser(user, preparedStatement);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()){
+				user.setId(resultSet.getInt("id"));
+				user.setName(resultSet.getString("name"));
+				user.setEmail(resultSet.getString("email"));
+				user.setPassword(resultSet.getString("password"));
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -118,21 +123,17 @@ public class UserModel implements IUser {
 			PreparedStatement preparedStatement =
 					DBConn.getConnection().prepareStatement(query);
 			preparedStatement.setString(1, Email);
-			return getUser(user, preparedStatement);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()){
+				user.setId(resultSet.getInt("id"));
+				user.setName(resultSet.getString("name"));
+				user.setEmail(resultSet.getString("email"));
+				user.setPassword(resultSet.getString("password"));
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return user;
 	}
 	
-	private User getUser(User user, PreparedStatement preparedStatement) throws SQLException {
-		ResultSet resultSet = preparedStatement.executeQuery();
-		while (resultSet.next()){
-			user.setId(resultSet.getInt("id"));
-			user.setName(resultSet.getString("name"));
-			user.setEmail(resultSet.getString("email"));
-			user.setPassword(resultSet.getString("password"));
-		}
-		return null;
-	}
 }

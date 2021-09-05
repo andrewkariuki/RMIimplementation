@@ -35,7 +35,7 @@ public class ToyComputeEngine extends UnicastRemoteObject implements IRMI {
 				}
 			});
 			
-			registerUserTask();
+			loginUserTask();
 			
 			System.out.println(Constants._SERVER + Constants.SERVER_PORT);
 		}catch (IOException | LipeRMIException | SQLException e){
