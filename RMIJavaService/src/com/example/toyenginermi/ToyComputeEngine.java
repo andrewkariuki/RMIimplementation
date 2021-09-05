@@ -23,6 +23,7 @@ public class ToyComputeEngine extends UnicastRemoteObject implements IRMI {
 			Server server = new Server();
 			
 			server.bind(Constants.SERVER_PORT, callHandler);
+			
 			server.addServerListener(new IServerListener() {
 				@Override
 				public void clientConnected(Socket socket) {

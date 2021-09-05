@@ -14,15 +14,22 @@ import com.example.toyenginermi.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.io.IOException;
+
+import lipermi.handler.CallHandler;
+import lipermi.net.Client;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    final String  LOCALHOST = "10.0.2.2";
-    final int PORT = 1099;
+    final String  _LOCALHOST = "10.0.2.2";
+    final int _PORT = 4000;
     Boolean isConnected = false;
+    IRMIClient irmiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        try {
+            connectRMISERVICE();
+            Toast.makeText(this, "RMI Server connected.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Cannot Connect RMI Server.", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
 
     }
 
@@ -64,5 +79,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void connectRMISERVICE() throws IOException {
+        CallHandler callHandler = new CallHandler();
+
+        Client client = new Client(_LOCALHOST, _PORT, callHandler);
+
+        irmiClient = (IRMIClient) client.getGlobal(IRMIClient.class);
+
+        System.out.println(irmiClient);
+
+        isConnected = true;
     }
 }

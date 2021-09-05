@@ -8,21 +8,12 @@
         android:id="@+id/signUpAppTittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/signup"
         android:textSize="30sp"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="10dp"
-        android:layout_above="@id/signUPLabel"/>
-
-    <TextView
-        android:id="@+id/signUPLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/signup"
-        android:textSize="17sp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="50dp"
         android:layout_above="@id/signUpEmailInput"/>
+
 
     <EditText
         android:id="@+id/signUpEmailInput"
